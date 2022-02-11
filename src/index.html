@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<title>Whac-a-Mole</title>
+		<script id="vertex-shader" type="x-shader/x-vertex">
+			precision mediump float;
+
+			attribute vec3 vertPosition;
+			attribute vec2 vertTexPosition;
+			varying vec2 fragText_pos;
+			uniform mat4 matWorld;
+			uniform mat4 matView;
+			uniform mat4 matProj;
+
+			void main() {
+  				fragText_pos = vertTexPosition;
+  				gl_Position = vec4(matProj * matView * matWorld * vec4(vertPosition, 1.0));
+			}
+		</script>
+
+		<script id="fragment-shader" type="x-shader/x-fragment">
+			precision mediump float;
+
+			varying vec2 fragText_pos;
+			uniform sampler2D sampler;
+
+			void main() {
+				gl_FragColor = texture2D(sampler, fragText_pos);
+			}
+		</script>
+		<script type="text/javascript" src="../common/gl-matrix.js"></script>
+		<script type="text/javascript" src="../common/webgl-utils.js"></script>
+		<script type="text/javascript" src="../common/initShaders.js"></script>
+		<img id="mole-image" src="../common/mole.png" width="0" height="0"></img>
+		<script type="text/javascript" src="../src/app.js"></script>
+		<label style="font-size: 90;font-weight: normal; color:rgb(5, 107, 44);position:relative;left: 95px; font-family: Courier New;">Whac-a-Mole</label>
+	</head>
+
+	<body body style="margin-left:400px;margin-top:20px" bgcolor="#b550d4" background="../common/bg.jpg">
+		
+		<canvas id="game-surface" width="800" height="800">
+			Your browser does not support HTML5
+		</canvas>
+		
+			
+		<label id="score" style="font-size: 40;font-weight: normal; color:rgb(0, 252, 168); font-family: Courier New;">Score = 0</label>
+			
+		
+	</body>
+</html>
