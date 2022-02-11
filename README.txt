@@ -3,4 +3,4 @@ Simple Whac-a-Mole Game
 2- If you can't click on the mole you lose a point depending on how far you clicked.
 3- Press p for pause, space for continue.
 4- When you reach 100 the game is over. You won!
-5- If you reach -50 you lose.
+5- If you reach -50 you lose. 
